@@ -17,6 +17,10 @@ class Modal extends React.Component {
       content,
       date: new Date(Date.now()).toLocaleString().split(",")[0],
     });
+    this.setState({
+      title: "",
+      content: "",
+    });
     this.props.onCloseModal();
   };
 

@@ -12,6 +12,13 @@ class Content extends React.Component {
     };
   }
 
+  handleRemoveNoteByIndex = (index) => {
+    let auxList = this.state.notesList;
+    this.setState({
+      notesIndex: auxList.splice(index, 1),
+    });
+  };
+
   handleAddNewNote = (newNote) => {
     const { notesList } = this.state;
     this.setState({ notesList: [...notesList, newNote] });
@@ -33,7 +40,10 @@ class Content extends React.Component {
         />
         <Control onAddNewNote={this.handleModalChangeState} />
         <div className="notes-container">
-          <NotesTable notesList={this.state.notesList} />
+          <NotesTable
+            onRemoveNote={this.handleRemoveNoteByIndex}
+            notesList={this.state.notesList}
+          />
         </div>
       </div>
     );

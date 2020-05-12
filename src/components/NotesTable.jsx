@@ -1,7 +1,7 @@
 import React from "react";
 
 function NotesTable(props) {
-  const { notesList } = props;
+  const { notesList, onRemoveNote } = props;
   return (
     <table id="created-notes">
       <thead>
@@ -19,7 +19,9 @@ function NotesTable(props) {
             <td>{note.content}</td>
             <td>{new Date(Date.now()).toLocaleString().split(",")[0]}</td>
             <td>
-              <button type="button">Remover</button>
+              <button onClick={() => onRemoveNote(index)} type="button">
+                Remover
+              </button>
             </td>
           </tr>
         ))}
