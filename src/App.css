@@ -168,6 +168,7 @@ input[type="submit"]:hover {
 
 #created-notes td,
 #created-notes th {
+  text-align: center;
   border: 1px solid #ddd;
   padding: 8px;
   word-wrap: break-word;
@@ -184,7 +185,6 @@ input[type="submit"]:hover {
 #created-notes th {
   padding-top: 12px;
   padding-bottom: 12px;
-  text-align: left;
   background-color: #949494;
   color: white;
 }
