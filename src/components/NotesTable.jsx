@@ -19,9 +19,22 @@ function NotesTable(props) {
             <td>{note.content}</td>
             <td>{new Date(Date.now()).toLocaleString().split(",")[0]}</td>
             <td>
-              <button onClick={() => onRemoveNote(index)} type="button">
-                Remover
-              </button>
+              <div>
+                <button
+                  className="action-button edit-note-button"
+                  // onClick={() => onRemoveNote(index)}
+                  type="button"
+                >
+                  Editar
+                </button>
+                <button
+                  className="action-button remove-note-button"
+                  onClick={() => onRemoveNote(index)}
+                  type="button"
+                >
+                  Remover
+                </button>
+              </div>
             </td>
           </tr>
         ))}

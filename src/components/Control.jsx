@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 class Control extends React.Component {
   constructor(props) {
@@ -13,9 +13,9 @@ class Control extends React.Component {
         <button
           onClick={() => onAddNewNote()}
           type="button"
-          className="new-note-button"
+          className="action-button new-note-button"
         >
-          + Nova nota
+          + Criar
         </button>
       </div>
     );

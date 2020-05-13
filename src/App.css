@@ -131,9 +131,8 @@ input[type="submit"]:hover {
   margin: 20px 0px;
 }
 
-.new-note-button {
+.action-button {
   border-radius: 7px;
-  background-color: #6495ed;
   border: none;
   color: white;
   padding: 15px 32px;
@@ -145,8 +144,23 @@ input[type="submit"]:hover {
   cursor: pointer;
 }
 
+.new-note-button {
+  background-color: #3fa32b;
+}
+
 /****************** Table Styles *********************/
+.edit-note-button {
+  background-color: #6495ed;
+  padding: 10px 20px;
+}
+
+.remove-note-button {
+  background-color: #ed6464;
+  padding: 10px 20px;
+}
+
 #created-notes {
+  table-layout: fixed;
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
@@ -156,6 +170,7 @@ input[type="submit"]:hover {
 #created-notes th {
   border: 1px solid #ddd;
   padding: 8px;
+  word-wrap: break-word;
 }
 
 #created-notes tr:nth-child(even) {
