@@ -1,13 +1,12 @@
-import React from 'react';
-import './App.css';
-import Content from './layout/Content';
+import React from "react";
+import "./App.css";
+import Content from "./layout/Content";
+import Header from "./layout/Header";
 
 function App() {
   return (
     <div className="App">
-      <header className="header">
-        <h1>React Bloco de Notas</h1>
-      </header>
+      <Header />
       <div className="content">
         <Content />
       </div>
