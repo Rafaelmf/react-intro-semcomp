@@ -1,2 +1,3 @@
 # react-intro-semcomp
-React Intro Semcomp
+
+Bloco de notas feito em React para o minicurso da Semcomp Beta 2020.
