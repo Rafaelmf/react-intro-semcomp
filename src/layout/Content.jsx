@@ -6,9 +6,9 @@ class Content extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isModalOpen: false,
+      isModalVisible: false,
       notesList: [],
-      noteData: {
+      currentNoteData: {
         title: "",
         content: "",
       },
@@ -18,8 +18,8 @@ class Content extends React.Component {
 
   handleEditNote = (note, index) => {
     this.setState({
-      noteData: note,
-      isModalOpen: true,
+      currentNoteData: note,
+      isModalVisible: true,
       indexCurrentNote: index,
     });
   };
@@ -32,20 +32,20 @@ class Content extends React.Component {
   };
 
   handleChangeNoteData = (value) => {
-    this.setState({ noteData: value });
+    this.setState({ currentNoteData: value });
   };
 
   handleSaveNote = (e) => {
     // Evitar o comportamento padrão de submissão do elemento form do html, queremos controlar por conta
     e.preventDefault();
-    const { notesList, noteData, indexCurrentNote } = this.state;
+    const { notesList, currentNoteData, indexCurrentNote } = this.state;
 
     //Criar data atual
-    const date = new Date(Date.now()).toLocaleString().split(",")[0];
+    const date = new Date(Date.now()).toLocaleString();
 
     //Criar novo objeto Nota com a data atual
     const newNoteData = {
-      ...noteData,
+      ...currentNoteData,
       date,
     };
 
@@ -60,8 +60,8 @@ class Content extends React.Component {
     // Atualiza o estado da classe
     this.setState({
       notesList: aux,
-      isModalOpen: false,
-      noteData: {
+      isModalVisible: false,
+      currentNoteData: {
         title: "",
         content: "",
       },
@@ -71,25 +71,25 @@ class Content extends React.Component {
 
   handleModalChangeVisibility = () => {
     // Inverter o estado de visibilidade da Modal
-    this.setState({ isModalOpen: !this.state.isModalOpen });
+    this.setState({ isModalVisible: !this.state.isModalVisible });
   };
 
   render() {
-    const { notesList, isModalOpen, noteData } = this.state;
+    const { notesList, isModalVisible, currentNoteData } = this.state;
     return (
       <div className="content">
         <div className="content-container">
           <Modal
-            isModalOpen={isModalOpen}
+            isModalVisible={isModalVisible}
             onChangeModalVisibility={this.handleModalChangeVisibility}
             onChangeNoteData={this.handleChangeNoteData}
             onSaveNote={this.handleSaveNote}
-            noteData={noteData}
+            currentNoteData={currentNoteData}
           />
 
           <div className="control-container">
             <button
-              onClick={() => this.handleModalChangeVisibility()}
+              onClick={this.handleModalChangeVisibility}
               type="button"
               className="action-button new-note-button"
             >

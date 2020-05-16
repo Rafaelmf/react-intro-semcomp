@@ -2,16 +2,16 @@ import React from "react";
 
 function Modal(props) {
   const {
-    isModalOpen,
+    isModalVisible,
     onChangeModalVisibility,
     onSaveNote,
     onChangeNoteData,
-    noteData,
+    currentNoteData,
   } = props;
   return (
     <div
       id="myModal"
-      className={isModalOpen ? "modal" : "modal display-none-modal"}
+      className={isModalVisible ? "modal" : "modal display-none-modal"}
     >
       <div className="modal-content">
         <div className="modal-header">
@@ -32,10 +32,10 @@ function Modal(props) {
               onChange={(event) =>
                 onChangeNoteData({
                   title: event.target.value,
-                  content: noteData.content,
+                  content: currentNoteData.content,
                 })
               }
-              value={noteData.title}
+              value={currentNoteData.title}
               type="text"
               name="title"
             />
@@ -46,10 +46,10 @@ function Modal(props) {
               onChange={(event) =>
                 onChangeNoteData({
                   content: event.target.value,
-                  title: noteData.title,
+                  title: currentNoteData.title,
                 })
               }
-              value={noteData.content}
+              value={currentNoteData.content}
               rows="5"
               name="content"
             />
