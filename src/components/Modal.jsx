@@ -9,10 +9,7 @@ const Modal = (props) => {
     currentNoteData,
   } = props;
   return (
-    <div
-      id="myModal"
-      className={isModalVisible ? "modal" : "modal display-none-modal"}
-    >
+    <div className={isModalVisible ? "modal" : "modal display-none-modal"}>
       <div className="modal-content">
         <div className="modal-header">
           <span>Adicionar nova nota</span>
