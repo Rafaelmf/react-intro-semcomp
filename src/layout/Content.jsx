@@ -36,22 +36,30 @@ class Content extends React.Component {
   };
 
   handleSaveNote = (e) => {
+    // Evitar o comportamento padrão de submissão do elemento form do html, queremos controlar por conta
     e.preventDefault();
     const { notesList, noteData, indexCurrentNote } = this.state;
+
+    //Criar data atual
     const date = new Date(Date.now()).toLocaleString().split(",")[0];
+
+    //Criar novo objeto Nota com a data atual
     const newNoteData = {
       ...noteData,
       date,
     };
-    let newNoteList;
+
+    // Determinar se é atualização ou inserção
+    let aux = notesList;
     if (indexCurrentNote === -1) {
-      newNoteList = [...notesList, newNoteData];
+      aux.push(newNoteData);
     } else {
-      newNoteList = notesList;
-      newNoteList[indexCurrentNote] = newNoteData;
+      aux[indexCurrentNote] = newNoteData;
     }
+
+    // Atualiza o estado da classe
     this.setState({
-      notesList: newNoteList,
+      notesList: aux,
       isModalOpen: false,
       noteData: {
         title: "",
@@ -62,35 +70,40 @@ class Content extends React.Component {
   };
 
   handleModalChangeVisibility = () => {
+    // Inverter o estado de visibilidade da Modal
     this.setState({ isModalOpen: !this.state.isModalOpen });
   };
 
   render() {
     const { notesList, isModalOpen, noteData } = this.state;
     return (
-      <div className="content-container">
-        <Modal
-          isModalOpen={isModalOpen}
-          onChangeModalVisibility={this.handleModalChangeVisibility}
-          onChangeNoteData={this.handleChangeNoteData}
-          onSaveNote={this.handleSaveNote}
-          noteData={noteData}
-        />
-        <div className="control-container">
-          <button
-            onClick={() => this.handleModalChangeVisibility()}
-            type="button"
-            className="action-button new-note-button"
-          >
-            + Criar
-          </button>
-        </div>
-        <div className="notes-container">
-          <NotesTable
-            onEditNote={this.handleEditNote}
-            onRemoveNote={this.handleRemoveNoteByIndex}
-            notesList={notesList}
+      <div className="content">
+        <div className="content-container">
+          <Modal
+            isModalOpen={isModalOpen}
+            onChangeModalVisibility={this.handleModalChangeVisibility}
+            onChangeNoteData={this.handleChangeNoteData}
+            onSaveNote={this.handleSaveNote}
+            noteData={noteData}
           />
+
+          <div className="control-container">
+            <button
+              onClick={() => this.handleModalChangeVisibility()}
+              type="button"
+              className="action-button new-note-button"
+            >
+              + Criar
+            </button>
+          </div>
+
+          <div className="notes-container">
+            <NotesTable
+              onEditNote={this.handleEditNote}
+              onRemoveNote={this.handleRemoveNoteByIndex}
+              notesList={notesList}
+            />
+          </div>
         </div>
       </div>
     );
