@@ -1,6 +1,6 @@
 import React from "react";
 
-function NotesTable(props) {
+const NotesTable = (props) => {
   const { notesList, onRemoveNote, onEditNote } = props;
   return (
     <table id="created-notes">
@@ -41,6 +41,6 @@ function NotesTable(props) {
       </tbody>
     </table>
   );
-}
+};
 
 export default NotesTable;

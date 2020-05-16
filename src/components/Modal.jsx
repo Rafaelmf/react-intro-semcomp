@@ -1,6 +1,6 @@
 import React from "react";
 
-function Modal(props) {
+const Modal = (props) => {
   const {
     isModalVisible,
     onChangeModalVisibility,
@@ -59,6 +59,6 @@ function Modal(props) {
       </div>
     </div>
   );
-}
+};
 
 export default Modal;
